@@ -1,0 +1,15 @@
+.responsive-container *:not(.logo):not(.toggle-theme-btn) {
+  @apply w-full sm:w-min;
+}
+
+.logo {
+  @apply font-bold font-logo-font text-2xl cursor-pointer select-none;
+}
+
+.separator {
+  @apply flex-1 hidden sm:block;
+}
+
+.toggle-theme-btn {
+  @apply px-4;
+}

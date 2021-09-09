@@ -1,0 +1,64 @@
+<div class="responsive-container flex-column">
+  <!-- first section image -->
+  <img src="test" class="details-image" />
+  <!-- second section title -->
+  <div class="title-favorite">
+    <div class="title">
+      {{
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum, fugit."
+      }}
+    </div>
+    <button class="favorite-btn">{{ "Add To Favoutite" }}</button>
+  </div>
+  <!-- third section  details-->
+  <div class="rating-duration-views">
+    <!-- rating -->
+    <div class="rating">
+      <span class="font-bold first-child">{{ "Rate Now" }}</span>
+      <div class="select-none rating-stars">
+        <span
+          [ngClass]="{ 'text-red-600': rating.rating >= star }"
+          (click)="addRating(star)"
+          *ngFor="let star of ratingStars"
+          class="text-red-300 cursor-pointer material-icons-round on-hover"
+        >
+          star_rate
+        </span>
+      </div>
+    </div>
+    <!-- duration -->
+    <div class="duration">
+      <span class="font-bold first-child">{{ "Durartion" }}</span>
+      <span>{{ "00:00:00" }}</span>
+    </div>
+    <!-- views & likes -->
+    <div class="views-likes">
+      <div class="views">
+        <span class="material-icons-round first-child"> visibility </span>
+
+        <span class="first-child">{{ "1234" }}</span>
+      </div>
+      <div class="likes">
+        <span class="font-bold material-icons-round first-child">
+          thumb_up
+        </span>
+        <span>{{ "12345" }}</span>
+      </div>
+    </div>
+  </div>
+  <!-- forth section description -->
+  <div class="description">
+    <div class="published-on">
+      <span>{{ "published On: " }}</span>
+      <span>{{ "1/5/2017" }}</span>
+    </div>
+    <div class="description-data">
+      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quos accusamus
+      aspernatur autem dignissimos sunt, commodi aliquam nobis quae, atque
+      pariatur eum distinctio dolore reprehenderit recusandae at fugit dolorem,
+      sequi a. Quasi inventore minima, voluptatibus commodi labore tenetur illum
+      recusandae maiores vitae molestiae id soluta, dolorem iste modi sunt
+      mollitia obcaecati!
+    </div>
+  </div>
+</div>

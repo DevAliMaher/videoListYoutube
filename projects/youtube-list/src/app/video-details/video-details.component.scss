@@ -1,0 +1,47 @@
+.details-image {
+  @apply block w-full h-60;
+}
+
+.title-favorite,
+.rating-duration-views {
+  @apply flex flex-col sm:flex-row items-stretch sm:items-center justify-center sm:justify-between px-4 py-4 text-center;
+}
+
+.rating-duration-views div:nth-of-type(2) {
+  @apply mb-1 sm:mb-0;
+}
+
+.title {
+  @apply capitalize mb-2 sm:mb-0;
+}
+
+.favorite-btn {
+  @apply bg-red-700 px-8 py-3 rounded text-gray-300;
+}
+
+.description {
+  @apply flex-col items-start;
+}
+
+.views-likes,
+.rating {
+  @apply flex items-center justify-between;
+}
+
+.likes,
+.views,
+.duration {
+  @apply flex items-center justify-between;
+}
+
+.first-child {
+  margin-inline-end: 1rem;
+}
+
+.published-on {
+  @apply font-bold text-red-600 mb-4;
+}
+
+.on-hover:hover {
+  @apply text-red-600 #{!important};
+}

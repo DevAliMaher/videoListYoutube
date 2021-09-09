@@ -1,0 +1,24 @@
+:host {
+  @apply px-4 py-2 shadow flex flex-col items-stretch justify-center  sm:flex-row sm:items-center sm:justify-between;
+}
+
+:host:not(:last-of-type) {
+  @apply mb-2;
+}
+
+.video-img {
+  @apply h-24 w-11/12 mx-auto mb-2 sm:w-48 sm:mx-0 sm:mb-0;
+}
+
+.video-title {
+  @apply max-w-xs flex-1;
+}
+
+.video-title,
+.video-publish-date {
+  @apply text-center;
+}
+
+.video-details-btn {
+  @apply px-4 py-2 mt-2 shadow-md  rounded sm:mt-0;
+}

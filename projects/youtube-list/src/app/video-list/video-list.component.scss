@@ -1,0 +1,31 @@
+.list-header {
+  @apply w-full  flex items-center justify-around py-4;
+}
+
+.sort-btn {
+  @apply rounded py-2 relative flex items-center justify-between;
+  padding-inline-end: 2rem;
+  padding-inline-start: 1rem;
+}
+
+.sort-arrows {
+  @apply flex flex-col items-center justify-around;
+  margin-inline-end: 1rem;
+  font-size: 0.5rem;
+}
+
+.pagination {
+  @apply px-4 py-8 w-full flex items-center justify-end;
+}
+
+.pagination-btn {
+  @apply mx-1 flex items-center justify-center text-red-600;
+}
+
+.pagination-btn:disabled {
+  @apply text-gray-500;
+}
+
+.pagination-btn.prev span {
+  @apply transform rotate-180;
+}

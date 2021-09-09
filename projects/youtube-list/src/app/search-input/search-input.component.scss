@@ -1,0 +1,8 @@
+:host {
+  @apply flex bg-gray-300 dark:bg-gray-100 text-gray-600 text-center rounded-3xl p-2 shadow;
+}
+
+:host input {
+  all: unset;
+  @apply box-border h-full flex-1 px-2 capitalize;
+}

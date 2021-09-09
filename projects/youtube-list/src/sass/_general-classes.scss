@@ -1,0 +1,36 @@
+.block-component {
+  @apply block relative;
+}
+// for header
+.block-header {
+  @apply block fixed top-0 left-0 right-0 h-28 sm:h-20 z-40;
+}
+
+.flex-header {
+  @apply flex flex-wrap h-full w-full items-center justify-between px-4 py-4 sm:pt-0;
+}
+
+// for video list
+.full-space-list {
+  @apply w-full relative flex items-start justify-center pt-28 sm:pt-20;
+  min-height: calc(100vh - 5rem);
+}
+
+@media (max-width: 640px) {
+  .full-space-list {
+    min-height: calc(100vh - 7rem);
+  }
+}
+
+// for all res containers
+.responsive-container {
+  @apply mx-auto w-full lg:w-4/5 sm:w-3/4  px-2 sm:px-6;
+}
+
+.flex-column {
+  @apply flex flex-col items-stretch justify-start;
+}
+
+.bg-dark {
+  @apply dark:bg-gray-700 bg-gray-300;
+}

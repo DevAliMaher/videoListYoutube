@@ -1,0 +1,10 @@
+/* You can add global styles to this file, and also use other style files */
+@use 'tailwindcss/base';
+
+@use './sass/base-styles';
+
+@use 'tailwindcss/components';
+
+@use './sass/general-classes';
+
+@use 'tailwindcss/utilities';

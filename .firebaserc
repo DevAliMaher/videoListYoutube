@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "chrome-ranger-325203": {
+      "hosting": {
+        "youtube-list": [
+          "chrome-ranger-325203"
+        ]
+      }
+    }
+  }
+}
