@@ -1,8 +1,11 @@
+import { isPlatformBrowser } from '@angular/common';
 import {
   Directive,
   HostListener,
+  Inject,
   Input,
   OnInit,
+  PLATFORM_ID,
   Renderer2,
 } from '@angular/core';
 
@@ -13,16 +16,10 @@ import { AppThemeModel } from '../models/app-theme.model';
   exportAs: 'toggleIcon',
 })
 export class AppThemeDirective implements OnInit {
+  // get theme as user required or init it as dark
   @Input() appTheme: AppThemeModel = 'dark';
-  private mainHTML = document.documentElement;
   private get isDarkTheme(): boolean {
-    return this.mainHTML.classList.contains('dark');
-  }
-
-  constructor(private renderer: Renderer2) {}
-
-  ngOnInit(): void {
-    this.setAppTheme(this.appTheme);
+    return this.appTheme === 'dark';
   }
 
   @HostListener('click') toggleTheme() {
@@ -30,14 +27,26 @@ export class AppThemeDirective implements OnInit {
     this.setAppTheme(newTheme, this.isDarkTheme);
   }
 
+  constructor(
+    private renderer: Renderer2,
+    @Inject(PLATFORM_ID) private platformId: Object
+  ) {}
+
+  ngOnInit(): void {
+    this.setAppTheme(this.appTheme);
+  }
+
   toggleThemeIcon(): string {
     return this.isDarkTheme ? 'dark_mode' : 'light_mode';
   }
 
   private setAppTheme(themeClass: AppThemeModel, isDark?: boolean): void {
-    localStorage.setItem('theme', themeClass);
-    isDark
-      ? this.renderer.removeAttribute(this.mainHTML, 'class')
-      : this.renderer.addClass(this.mainHTML, themeClass);
+    if (isPlatformBrowser(this.platformId)) {
+      localStorage.setItem('theme', themeClass);
+      const htmlEl = document.documentElement;
+      isDark
+        ? this.renderer.removeAttribute(htmlEl, 'class')
+        : this.renderer.addClass(htmlEl, themeClass);
+    }
   }
 }

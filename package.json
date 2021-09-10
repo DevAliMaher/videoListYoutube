@@ -1,12 +1,16 @@
 {
   "name": "my-workspace",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
+    "start": "ng serve --hmr --open",
+    "build": "ng build --aot && gzipper c --verbose ./dist",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "dev:ssr": "ng run youtube-list:serve-ssr",
+    "serve:ssr": "node dist/youtube-list/server/main.js",
+    "build:ssr": "ng build && ng run youtube-list:server && gzipper c --verbose ./dist",
+    "prerender": "ng run youtube-list:prerender"
   },
   "private": true,
   "dependencies": {
@@ -18,8 +22,13 @@
     "@angular/forms": "~12.2.0",
     "@angular/platform-browser": "~12.2.0",
     "@angular/platform-browser-dynamic": "~12.2.0",
+    "@angular/platform-server": "~12.2.0",
     "@angular/router": "~12.2.0",
+    "@angular/service-worker": "~12.2.0",
+    "@nguniversal/express-engine": "12.1.0",
+    "express": "^4.15.2",
     "firebase": "^9.0.0",
+    "gzipper": "^5.0.0",
     "immutable": "^4.0.0-rc.14",
     "memo-decorator": "^2.0.1",
     "rxfire": "^6.0.0",
@@ -33,6 +42,8 @@
     "@angular-devkit/build-angular": "~12.2.4",
     "@angular/cli": "~12.2.4",
     "@angular/compiler-cli": "~12.2.0",
+    "@nguniversal/builders": "^12.1.0",
+    "@types/express": "^4.17.0",
     "@types/jasmine": "~3.8.0",
     "@types/node": "^12.11.1",
     "autoprefixer": "^10.3.4",

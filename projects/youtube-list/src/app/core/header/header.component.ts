@@ -1,9 +1,16 @@
+import { AppThemeModel } from 'projects/youtube-list/src/app/core/models/app-theme.model';
 import { InputDataModel } from 'projects/youtube-list/src/app/core/models/input-data.model';
 
-import { ChangeDetectionStrategy, Component, HostBinding } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  HostBinding,
+  Inject,
+  PLATFORM_ID,
+} from '@angular/core';
 
 import { SearchService } from '../services/search.service';
-import { AppThemeModel } from 'projects/youtube-list/src/app/core/models/app-theme.model';
 
 @Component({
   selector: 'app-header',
@@ -25,12 +32,18 @@ import { AppThemeModel } from 'projects/youtube-list/src/app/core/models/app-the
 })
 export class HeaderComponent {
   @HostBinding('class.block-header') headerClass = true;
-  userTheme: AppThemeModel =
-    <AppThemeModel>localStorage.getItem('theme') || 'dark';
+
+  userTheme: AppThemeModel = isPlatformBrowser(this.platformId)
+    ? <AppThemeModel>localStorage.getItem('theme')
+    : 'dark';
+
   searchData: InputDataModel = {
     placeholder: 'search by video title',
     materialIcon: 'search',
   };
 
-  constructor(public searchService: SearchService) {}
+  constructor(
+    public searchService: SearchService,
+    @Inject(PLATFORM_ID) private platformId: Object
+  ) {}
 }
