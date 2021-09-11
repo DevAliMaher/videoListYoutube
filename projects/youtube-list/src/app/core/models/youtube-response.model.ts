@@ -8,6 +8,11 @@ export interface YoutubeResponseModel {
     totalResults: number;
     resultsPerPage: number;
   };
+  channelTitle: string;
+  localized: {
+    title: string;
+    description: string;
+  };
 }
 
 export interface YoutubeItemModel {
@@ -59,5 +64,13 @@ export interface YoutubeItemModel {
   contentDetails: {
     videoId: string;
     videoPublishedAt: string;
+    duration: string;
+  };
+  statistics?: {
+    viewCount: string;
+    likeCount: string;
+    dislikeCount: string;
+    favoriteCount: string;
+    commentCount: string;
   };
 }

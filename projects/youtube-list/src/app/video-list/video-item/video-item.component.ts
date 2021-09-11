@@ -5,9 +5,17 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 @Component({
   selector: 'app-video-item',
   template: `
-    <img [src]="videoItem?.imageUrl" class="video-img" />
+    <!-- video image -->
+    <img
+      [src]="videoItem?.standardImageUrl"
+      alt="Video Image"
+      class="video-img"
+    />
+    <!-- video title -->
     <div class="video-title">{{ videoItem?.videoTitle }}</div>
+    <!-- video publish date -->
     <div class="video-publish-date">{{ videoItem?.videoDate | date }}</div>
+    <!-- details btn navigate ti details route -->
     <button
       type="button"
       class="video-details-btn bg-dark"

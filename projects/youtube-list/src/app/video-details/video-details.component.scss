@@ -1,5 +1,12 @@
 .details-image {
-  @apply block w-full h-60;
+  height: 32rem;
+  @apply block w-full;
+}
+
+@media (max-width: 640px) {
+  .details-image {
+    @apply h-full;
+  }
 }
 
 .title-favorite,
@@ -17,6 +24,10 @@
 
 .favorite-btn {
   @apply bg-red-700 px-8 py-3 rounded text-gray-300;
+}
+
+.unFavorite {
+  @apply bg-gray-600;
 }
 
 .description {
@@ -39,7 +50,12 @@
 }
 
 .published-on {
-  @apply font-bold text-red-600 mb-4;
+  @apply font-bold text-red-400 mb-4;
+}
+
+.published-on span:first-of-type {
+  @apply inline-block;
+  margin-inline-end: 1.5rem;
 }
 
 .on-hover:hover {

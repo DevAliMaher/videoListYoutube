@@ -1,4 +1,5 @@
 export interface VideoRationModel {
-  id: string;
-  rating: number;
+  rating?: number;
+  favorite?: boolean;
+  id?: string;
 }

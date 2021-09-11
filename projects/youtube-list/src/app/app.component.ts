@@ -1,8 +1,7 @@
-import { merge, Observable } from 'rxjs';
-import { filter, mapTo } from 'rxjs/operators';
+import { LoadingService } from 'projects/youtube-list/src/app/core/services/loading.service';
+import { Observable } from 'rxjs';
 
-import { Component, OnInit } from '@angular/core';
-import { ResolveEnd, ResolveStart, Router } from '@angular/router';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -19,23 +18,7 @@ import { ResolveEnd, ResolveStart, Router } from '@angular/router';
     `,
   ],
 })
-export class AppComponent implements OnInit {
-  loading$!: Observable<boolean>;
-  private loadingStart$!: Observable<boolean>;
-  private loadingEnd$!: Observable<boolean>;
-  constructor(private router: Router) {}
-
-  ngOnInit(): void {
-    this.loadingStart$ = this.router.events.pipe(
-      filter((event) => event instanceof ResolveStart),
-      mapTo(true)
-    );
-
-    this.loadingEnd$ = this.router.events.pipe(
-      filter((event) => event instanceof ResolveEnd),
-      mapTo(false)
-    );
-
-    this.loading$ = merge(this.loadingStart$, this.loadingEnd$);
-  }
+export class AppComponent {
+  loading$: Observable<boolean> = this.loadingService.loadingObservable$;
+  constructor(private loadingService: LoadingService) {}
 }

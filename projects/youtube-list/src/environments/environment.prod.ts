@@ -13,5 +13,5 @@ export const environment = {
   accessToken:
     '583297461489-h3ned48ieck5jptaop8i36n780ur7qff.apps.googleusercontent.com',
   apiKey: 'AIzaSyDwlsHZoMwxoSU139Xqxw6L9k-AzFlEiyY',
-  channelId: 'PLpBsrwURbA1B2iJ8j1HPdAkYJo9qZfNDH',
+  playListId: 'PLpBsrwURbA1CQDzEMA-y2YcYom4bjGo8f',
 };

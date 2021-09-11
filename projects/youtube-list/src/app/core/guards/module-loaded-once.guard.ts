@@ -1,3 +1,4 @@
+// guard to ensure singleton pattern
 export class ModuleLoadedOnceGuard {
   constructor(targetModule: any) {
     if (targetModule) {

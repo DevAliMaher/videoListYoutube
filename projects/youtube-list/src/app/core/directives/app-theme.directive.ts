@@ -16,10 +16,13 @@ import { AppThemeModel } from '../models/app-theme.model';
   exportAs: 'toggleIcon',
 })
 export class AppThemeDirective implements OnInit {
-  // get theme as user required or init it as dark
+  // get theme as developer required on usage or init it as dark
   @Input() appTheme: AppThemeModel = 'dark';
   private get isDarkTheme(): boolean {
-    return this.appTheme === 'dark';
+    if (isPlatformBrowser(this.platformId)) {
+      return document.documentElement.classList.contains('dark');
+    }
+    return false;
   }
 
   @HostListener('click') toggleTheme() {
@@ -36,10 +39,12 @@ export class AppThemeDirective implements OnInit {
     this.setAppTheme(this.appTheme);
   }
 
+  // return material icon for each theme ,, used by exportAs
   toggleThemeIcon(): string {
     return this.isDarkTheme ? 'dark_mode' : 'light_mode';
   }
 
+  // set new theme and save it in local storage
   private setAppTheme(themeClass: AppThemeModel, isDark?: boolean): void {
     if (isPlatformBrowser(this.platformId)) {
       localStorage.setItem('theme', themeClass);

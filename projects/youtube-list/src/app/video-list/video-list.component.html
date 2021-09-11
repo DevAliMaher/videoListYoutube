@@ -1,62 +1,77 @@
-<app-loading-bar *ngIf="loading$ | async"></app-loading-bar>
 <div class="responsive-container flex-column">
-  <!-- header sort -->
-  <div class="list-header">
-    <button
-      (click)="sortVideos('videoTitle')"
-      type="button"
-      class="sort-btn bg-dark"
-    >
-      <div class="sort-arrows">
-        <span>&#9650;</span>
-        <span>&#9660;</span>
-      </div>
-      <span>{{ "Title" }}</span>
-    </button>
-    <button
-      (click)="sortVideos('videoDate')"
-      type="button"
-      class="sort-btn bg-dark"
-    >
-      <div class="sort-arrows">
-        <span>&#9650;</span>
-        <span>&#9660;</span>
-      </div>
-      <span>{{ "Publish Date" }}</span>
-    </button>
+  <!-- search by channel id -->
+  <div class="search-container">
+    <app-search-input
+      [inputData]="searchData"
+      (userInput)="searchBuChannelId($event)"
+    ></app-search-input>
   </div>
-  <!-- end of header sort -->
-  <!-- videos list -->
-  <ng-container *ngIf="videoListResponse$ | async as videoList">
-    <app-video-item
-      *ngFor="
-        let video of videoList.items
-          | filter: (userSearchInput$ | async)
-          | sortData: sortType:sortDir
-      "
-      [videoItem]="video"
-    ></app-video-item>
-
-    <div *ngIf="!videoList.items.length" class="no-data-container">
-      {{ "No Available Data" }}
+  <!-- main data section -->
+  <div *ngIf="videoList && !errorMessage" class="list-container">
+    <!-- header sort -->
+    <div class="list-header">
+      <button
+        (click)="sortVideos('videoTitle')"
+        type="button"
+        class="sort-btn bg-dark"
+      >
+        <div class="sort-arrows">
+          <span>&#9650;</span>
+          <span>&#9660;</span>
+        </div>
+        <span>{{ "Title" }}</span>
+      </button>
+      <button
+        (click)="sortVideos('videoDate')"
+        type="button"
+        class="sort-btn bg-dark"
+      >
+        <div class="sort-arrows">
+          <span>&#9650;</span>
+          <span>&#9660;</span>
+        </div>
+        <span>{{ "Publish Date" }}</span>
+      </button>
     </div>
+    <!-- end of header sort -->
+    <!-- videos list -->
+    <div class="video-list-container">
+      <app-video-item
+        *ngFor="
+          let video of videoList.items
+            | filter: (userSearchInput$ | async)
+            | sortData: sortType:sortDir;
+          trackBy: trackBy
+        "
+        [videoItem]="video"
+      ></app-video-item>
+    </div>
+    <!-- end video list -->
     <!-- pagination -->
     <div *ngIf="videoList.pageInfo.totalResults > 5" class="pagination">
+      <!-- next btn -->
       <button
-        (click)="queryNewPage(videoList.prevPageToken)"
+        (click)="queryNewPage(channelId, videoList.prevPageToken)"
         [disabled]="!videoList.prevPageToken"
         class="pagination-btn prev"
       >
         <span class="material-icons-round"> play_arrow </span>
       </button>
+      <!-- prev btn -->
       <button
-        (click)="queryNewPage(videoList.nextPageToken)"
+        (click)="queryNewPage(channelId, videoList.nextPageToken)"
         [disabled]="!videoList.nextPageToken"
         class="pagination-btn next"
       >
         <span class="material-icons-round"> play_arrow </span>
       </button>
     </div>
-  </ng-container>
-  <!-- end video list -->
+    <!-- end of pagination -->
+  </div>
+  <!-- if no data -->
+  <div
+    *ngIf="!videoList && errorMessage"
+    [innerHtml]="errorMessage || 'No Available Data'"
+    class="responsive-container no-data-container"
+  ></div>
 </div>

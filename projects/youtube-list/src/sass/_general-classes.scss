@@ -3,7 +3,7 @@
 }
 // for header
 .block-header {
-  @apply block fixed top-0 left-0 right-0 h-28 sm:h-20 z-40;
+  @apply block fixed top-0 left-0 right-0 h-28 sm:h-20 bg-white dark:bg-gray-800 z-40;
 }
 
 .flex-header {
@@ -13,7 +13,7 @@
 // for video list
 .full-space-list {
   @apply w-full relative flex items-start justify-center pt-28 sm:pt-20;
-  min-height: calc(100vh - 5rem);
+  min-height: calc(100vh - 1rem);
 }
 
 @media (max-width: 640px) {

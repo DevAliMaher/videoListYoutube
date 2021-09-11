@@ -1,3 +1,7 @@
+.search-container {
+  @apply w-full flex items-center justify-center py-4;
+}
+
 .list-header {
   @apply w-full  flex items-center justify-around py-4;
 }
@@ -28,4 +32,8 @@
 
 .pagination-btn.prev span {
   @apply transform rotate-180;
+}
+
+.no-data-container {
+  @apply w-full text-center capitalize font-bold text-2xl text-red-400 pt-8;
 }

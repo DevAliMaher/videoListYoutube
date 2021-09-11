@@ -16,11 +16,14 @@ import { SearchService } from '../services/search.service';
   selector: 'app-header',
   template: `
     <div class="responsive-container flex-header">
+      <!-- logo navigate to main route -->
       <div class="logo" routerLink="/">{{ 'inmobly' }}</div>
       <div class="separator"></div>
+      <!-- toggle theme btn -->
       <button [appTheme]="userTheme" #btn="toggleIcon" class="toggle-theme-btn">
         <span class="material-icons-round"> {{ btn.toggleThemeIcon() }} </span>
       </button>
+      <!-- search input -->
       <app-search-input
         [inputData]="searchData"
         (userInput)="searchService.userInputSubject$.next($event)"

@@ -1,5 +1,6 @@
 :host {
   @apply flex bg-gray-300 dark:bg-gray-100 text-gray-600 text-center rounded-3xl p-2 shadow;
+  min-width: clamp(250px, 90%, 350px);
 }
 
 :host input {
