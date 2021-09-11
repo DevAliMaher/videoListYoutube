@@ -70,7 +70,7 @@
   </div>
   <!-- if no data -->
   <div
-    *ngIf="!videoList && errorMessage"
+    *ngIf="errorMessage"
     [innerHtml]="errorMessage || 'No Available Data'"
     class="responsive-container no-data-container"
   ></div>

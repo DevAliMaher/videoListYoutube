@@ -74,6 +74,7 @@ export class VideoListComponent implements OnInit, OnDestroy {
           return (this.videoList = { ...data });
         }),
         catchError((error) => {
+          console.log(error);
           return (this.errorMessage = error);
         })
       )
